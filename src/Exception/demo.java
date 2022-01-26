@@ -1,5 +1,9 @@
 package Exception;
-
+class NegativeDimensionException extends Exception{
+    public String toString(){
+        return "Dimension of a Rectangle cannot be Negative ";
+    }
+}
 public class demo {
     static int meth1(){
         return 10/5;
@@ -10,12 +14,12 @@ public class demo {
     static void meth3(){
         meth2();
     }
-    static int area (int l, int b) throws Exception {
+    static int area (int l, int b) throws NegativeDimensionException {
         if(l<0 || b<0)
-            throw new Exception();
+            throw new NegativeDimensionException();
         return l*b;
     }
-    static void meth4() throws Exception{
+    static void meth4() throws NegativeDimensionException{
         System.out.println("Area of rectangle "+ area(-10,5));
     }
     public static void main(String[] args) {
@@ -26,7 +30,7 @@ public class demo {
         catch (ArithmeticException e){
             System.out.println(e);
         }
-        catch (Exception e) {
+        catch (NegativeDimensionException e) {
             System.out.println(e);
         }
     }
